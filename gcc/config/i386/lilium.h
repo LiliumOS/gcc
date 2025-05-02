@@ -5,14 +5,17 @@
 #define LILIUM_TARGET_EMUL "elf_i386"
 #endif
 
-#define LILIUM_LINK_SPEC \
-  "%{64|32:-m " LILIUM_TARGET_EMUL "} \
-  %{shared:-shared} \
+#undef  SUBTARGET_EXTRA_SPECS
+#define SUBTARGET_EXTRA_SPECS \
+  { "link_emulation", LILIUM_TARGET_EMUL },\
+  { "dynamic_linker", LILIUM_DYNAMIC_LINKER }
+
+#define LILIUM_LINK_SPEC "-m %(link_emulation) %{shared:-shared} \
   %{!shared: \
     %{!static: \
       %{!static-pie: \
 	%{rdynamic:-export-dynamic} \
-	%{ -dynamic-linker " LILIUM_DYNAMIC_LINKER "} \
+	-dynamic-linker %(dynamic_linker)}} \
     %{static:-static} %{static-pie:-static -pie --no-dynamic-linker -z text}}"
 
 #undef LINK_SPEC

@@ -25,16 +25,16 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 #define TARGET_LIBC_HAS_FUNCTION no_c99_libc_has_function
 
 #if (!(LILIUM_NO_LIBUSI))
-#define LILIUM_STARTFILE_SPEC "%{libusi-init.a}"
+#define LILIUM_STARTFILE_SPEC "%{!shared:--whole-archive -lusi-init --no-whole-archive}"
 
-#define LILIUM_ENDFILE_SPEC "%{}" // There are no endfiles - all initialization is handled by libusi-init.a
+#define LILIUM_ENDFILE_SPEC "" // There are no endfiles - all initialization is handled by libusi-init.a
 
-#define LILIUM_TARGET_LIB_SPEC "%{shared|!shared:-lc -lusi}"
+#define LILIUM_TARGET_LIB_SPEC "-lc -lusi"
 
 #else
-#define LILIUM_STARTFILE_SPEC "%{}"
-#define LILIUM_ENDFILE_SPEC "%{}"
-#define LILIUM_TARGET_LIB_SPEC "%{}"
+#define LILIUM_STARTFILE_SPEC ""
+#define LILIUM_ENDFILE_SPEC ""
+#define LILIUM_TARGET_LIB_SPEC ""
 #endif
 #undef STARTFILE_SPEC
 #define STARTFILE_SPEC LILIUM_STARTFILE_SPEC
@@ -45,11 +45,11 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 
 #ifndef LILIUM_DYNAMIC_LINKER
 #if (!(LILIUM_USE_KERNEL_LDSO))
-#define LILIUM_DYNAMIC_LINKER "/lib/ld-lilium-" LILIUM_LDSO_ARCH ".so.0"
+#define LILIUM_DYNAMIC_LINKER "/lib/ld-lilium-" LILIUM_LDSO_ARCH ".so.1"
 #else
 #define LILIUM_DYNAMIC_LINKER "/lilium-loader-" LILIUM_LDSO_ARCH ".so"
 #endif
 #endif
 
 #undef CPP_SPEC
-#define CPP_SPEC "%{-D_LILIUM}"
+#define CPP_SPEC "-D_LILIUM=1"
