@@ -29,7 +29,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 
 #define LILIUM_ENDFILE_SPEC "%{}" // There are no endfiles - all initialization is handled by libusi-init.a
 
-#define LILIUM_TARGET_LIB_SPEC "%{-lc -lusi}"
+#define LILIUM_TARGET_LIB_SPEC "%{shared|!shared:-lc -lusi}"
 
 #else
 #define LILIUM_STARTFILE_SPEC "%{}"
@@ -40,6 +40,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 #define STARTFILE_SPEC LILIUM_STARTFILE_SPEC
 #undef ENDFILE_SPEC
 #define ENDFILE_SPEC LILIUM_ENDFILE_SPEC
+#undef LIB_SPEC
 #define LIB_SPEC LILIUM_TARGET_LIB_SPEC
 
 #ifndef LILIUM_DYNAMIC_LINKER
@@ -50,4 +51,5 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 #endif
 #endif
 
+#undef CPP_SPEC
 #define CPP_SPEC "%{-D_LILIUM}"

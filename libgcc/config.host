@@ -317,6 +317,9 @@ case ${host} in
     extra_parts="$extra_parts vtv_start.o vtv_end.o vtv_start_preinit.o vtv_end_preinit.o"
   fi
   ;;
+*-*-lilium*)
+	tmake_file="$tmake_file t-crtstuff-pic t-libgcc-pic t-slibgcc t-slibgcc-gld t-slibgcc-elf-ver"
+	;;
 *-*-lynxos*)
   tmake_file="$tmake_file t-lynx $cpu_type/t-crtstuff t-crtstuff-pic t-libgcc-pic"
   extra_parts="crtbegin.o crtbeginS.o crtend.o crtendS.o"
@@ -955,6 +958,9 @@ x86_64-*-mingw*)
 	if test x$enable_vtable_verify = xyes; then
 		extra_parts="$extra_parts vtv_start.o vtv_end.o vtv_start_preinit.o vtv_end_preinit.o"
 	fi
+	;;
+x86_64-*-lilium*)
+	tmake_files="$tmake_files t-libgcc-pic"
 	;;
 ia64*-*-elf*)
 	extra_parts="$extra_parts crtbeginS.o crtendS.o crtfastmath.o"

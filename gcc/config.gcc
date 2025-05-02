@@ -978,10 +978,10 @@ case ${target} in
 
 	case $target in
 		x86_64-* | x86_64v*-* )
-			tm_defines="${tm_defines} LILIUM_LDSO_ARCH=\"x86_64\""
+			tm_defines="${tm_defines} LILIUM_LDSO_ARCH=\\\"x86_64\\\""
 			;;
 		i[3-7]86-* )
-			tm_defines="${tm_defines} LILIUM_LDSO_ARCH=\"i686\""
+			tm_defines="${tm_defines} LILIUM_LDSO_ARCH='\"i686\"'"
 			;;
 	esac
 	case $target in 
@@ -2138,10 +2138,10 @@ x86_64-*-linux* | x86_64-*-kfreebsd*-gnu | x86_64-*-gnu*)
 	TM_MULTILIB_CONFIG=`echo $TM_MULTILIB_CONFIG | sed 's/^,//'`
 	;;
 x86_64-*-lilium* )
-	tm_file="${tm_file} elfos.h i386/att.h i386/x86-64.h i386/lilium.h" 
+	tm_file="${tm_file} elfos.h i386/unix.h i386/att.h i386/x86-64.h i386/lilium.h"
 	;;
 i[345867]-*-lilium* )
-	tm_file="${tm_file} elfos.h i386/att.h i386/lilium.h" 
+	tm_file="${tm_file} elfos.h i386/unix.h i386/att.h i386/lilium.h" 
 	;;
 i[34567]86-pc-msdosdjgpp*)
 	xm_file=i386/xm-djgpp.h
