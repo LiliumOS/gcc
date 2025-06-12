@@ -25,9 +25,9 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 #define TARGET_LIBC_HAS_FUNCTION no_c99_libc_has_function
 
 #if (!(LILIUM_NO_LIBUSI))
-#define LILIUM_STARTFILE_SPEC "%{!shared:--whole-archive -lusi-init --no-whole-archive}"
+#define LILIUM_STARTFILE_SPEC ""
 
-#define LILIUM_ENDFILE_SPEC "" // There are no endfiles - all initialization is handled by libusi-init.a
+#define LILIUM_ENDFILE_SPEC "%{!shared:--whole-archive -lusi-init --no-whole-archive}" // There are no endfiles - all initialization is handled by libusi-init.a
 
 #define LILIUM_TARGET_LIB_SPEC "-lc -lusi"
 
