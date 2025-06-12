@@ -3147,6 +3147,8 @@ ix86_option_override_internal (bool main_args_p,
     opts->x_target_flags |= (TARGET_64BIT
 			     ? MASK_LONG_DOUBLE_128
 			     : MASK_LONG_DOUBLE_64);
+  else if(TARGET_DEFAULT_LONG_DOUBLE_64 && !(opts_set->x_target_flags & (MASK_LONG_DOUBLE_64 | MASK_LONG_DOUBLE_128)))
+      opts->x_target_flags = MASK_LONG_DOUBLE_64;
 
   /* Only one of them can be active.  */
   gcc_assert ((opts->x_target_flags & MASK_LONG_DOUBLE_64) == 0
