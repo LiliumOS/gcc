@@ -2137,7 +2137,8 @@ x86_64-*-linux* | x86_64-*-kfreebsd*-gnu | x86_64-*-gnu*)
 	done
 	TM_MULTILIB_CONFIG=`echo $TM_MULTILIB_CONFIG | sed 's/^,//'`
 	;;
-x86_64-*-lilium* )
+x86_64*-*-lilium* )
+	tm_defines="${tm_defines} TARGET_DEFAULT_LONG_DOUBLE_64=1"
 	tm_file="${tm_file} elfos.h i386/unix.h i386/att.h i386/x86-64.h i386/lilium.h"
 	;;
 i[345867]-*-lilium* )
