@@ -960,7 +960,7 @@ x86_64-*-mingw*)
 	fi
 	;;
 x86_64-*-lilium*)
-	tmake_files="$tmake_files t-libgcc-pic"
+	tmake_file="${tmake_file} t-libgcc-pic i386/t-lilium"
 	;;
 ia64*-*-elf*)
 	extra_parts="$extra_parts crtbeginS.o crtendS.o crtfastmath.o"

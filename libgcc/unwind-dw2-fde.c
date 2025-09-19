@@ -42,7 +42,8 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 #endif
 #endif
 
-typedef __UINTPTR_TYPE__ uintptr_type;
+// FIXME: This needs to be turned back to using `__UINTPTR_TYPE__` at some point. figure out why that breaks
+typedef unsigned long uintptr_type;
 
 #ifdef ATOMIC_FDE_FAST_PATH
 #include "unwind-dw2-btree.h"
